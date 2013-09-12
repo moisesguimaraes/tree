@@ -15,6 +15,11 @@ class Node(object):
 
     def __str__(self):
         return str(self.data)
+        
+    def height(self):
+        return 1 + max(self.left.height()  if self.left  else -1, \
+                       self.right.height() if self.right else -1)
+        
 
 class Tree:
     
@@ -23,6 +28,10 @@ class Tree:
         
         if data:
             self.insert(data)
+            
+            
+    def height(self):
+        return self.root.height() if self.root else -1
         
         
     def _insert(self, node, data):
